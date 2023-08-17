@@ -28,7 +28,6 @@ export const authOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials: any) {
-
         //hard code --->> need to upgrade to fetch user from DB and return the user if its passed
         const user = { id: 1, username: "Nghia", password: "1234" };
 
@@ -44,4 +43,8 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  pages: {
+    signIn: "/sign-in",
+    signOut: "/sign-out",
+  },
 };

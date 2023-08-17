@@ -8,9 +8,9 @@ export default async function Home() {
   return (
     <>
       {session ? (
-        <pre>{JSON.stringify(session, null, 2)}</pre>
+        <h1>Homepage</h1>
       ) : (
-        <div>You've not signed in</div>
+        <div>You've not signed in<a href="/api/auth/signin">Login</a></div>
       )}
     </>
   );
