@@ -1,3 +1,16 @@
-export default function Home() {
-  return <h1 className="text-blue">Tripdly Dashboard</h1>;
+import { authOptions } from "../api/auth/[...nextauth]/options";
+import { getServerSession } from "next-auth/next";
+
+export default async function DashboardPage() {
+  const session = await getServerSession(authOptions);
+
+  return (
+    <>
+      {session ? (
+        <div>You logged in</div>
+      ) : (
+        <h1 className="text-5xl">You Shall Not Pass!</h1>
+      )}
+    </>
+  );
 }
