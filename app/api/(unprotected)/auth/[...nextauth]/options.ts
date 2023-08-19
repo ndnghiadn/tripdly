@@ -2,6 +2,9 @@ import type { NextAuthOptions } from "@/node_modules/next-auth/index";
 import FacebookProvider from "@/node_modules/next-auth/providers/facebook";
 import GoogleProvider from "@/node_modules/next-auth/providers/google";
 import CredentialsProvider from "@/node_modules/next-auth/providers/credentials";
+import User from "@/lib/models/user.model";
+import { connectToDB } from "@/lib/mongoose";
+import bcrypt from "bcryptjs";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -28,16 +31,22 @@ export const authOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials: any) {
-        //hard code --->> need to upgrade to fetch user from DB and return the user if its passed
-        const user = { id: 1, username: "Nghia", password: "1234" };
+        connectToDB();
+        try {
+          const user = await User.findOne({ username: credentials.username });
+          if (!user) return null;
 
-        if (
-          credentials?.username === user.username &&
-          credentials?.password === user.password
-        ) {
-          console.log("This is user", user);
-          return user;
-        } else {
+          const isCorrect = await bcrypt.compare(
+            credentials.password,
+            user.password
+          );
+
+          if (!isCorrect) return null;
+
+          return {
+            name: user.username
+          };
+        } catch (err) {
           return null;
         }
       },

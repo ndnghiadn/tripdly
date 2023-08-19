@@ -1,16 +1,24 @@
-import { Button } from "@/components/ui/button";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "./api/auth/[...nextauth]/options";
+"use client";
 
-export default async function Home() {
-  const session = await getServerSession(authOptions);
+import { Button } from "@/components/ui/button";
+import { useSession } from "next-auth/react";
+import { authOptions } from "./api/(unprotected)/auth/[...nextauth]/options";
+import Link from "next/link";
+
+export default function Home() {
+  const { data: session, status } = useSession();
 
   return (
     <>
       {session ? (
-        <h1>Homepage</h1>
+        <>
+          <h1>Homepage</h1>
+          <pre>{JSON.stringify(session)}</pre>
+        </>
       ) : (
-        <div>You've not signed in<a href="/api/auth/signin">Login</a></div>
+        <div>
+          You've not signed in <Link href="/api/auth/signin">Login</Link>
+        </div>
       )}
     </>
   );
