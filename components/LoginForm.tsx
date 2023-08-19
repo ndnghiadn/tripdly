@@ -16,6 +16,10 @@ export const LoginForm = () => {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/";
 
+  useEffect(() => {
+    console.log('hello world')
+  }, []);
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -63,7 +67,7 @@ export const LoginForm = () => {
           name="username"
           value={formValues.username}
           onChange={handleChange}
-          placeholder="username address"
+          placeholder="Username"
           className={`${input_style}`}
         />
       </div>

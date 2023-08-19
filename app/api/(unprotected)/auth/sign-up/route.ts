@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
-    const newUser = new User({ id: 1, username, password: hash });
+    const newUser = new User({ username, password: hash });
 
     await newUser.save();
     return new NextResponse("User has been created!");
