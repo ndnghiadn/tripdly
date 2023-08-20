@@ -1,4 +1,4 @@
-import { authOptions } from "../api/(unprotected)/auth/[...nextauth]/options";
+import { authOptions } from "../../api/(unprotected)/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 
 export default async function DashboardPage() {
