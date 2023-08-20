@@ -1,8 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
-import { authOptions } from "./api/(unprotected)/auth/[...nextauth]/options";
 import Link from "next/link";
 
 export default function Home() {

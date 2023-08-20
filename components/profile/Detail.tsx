@@ -1,3 +1,4 @@
+"use client"
 export default function DetailPersonalPage(){
     return(
         <div className="mt-4 flex gap-4">
