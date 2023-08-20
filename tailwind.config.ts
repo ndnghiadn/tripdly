@@ -173,6 +173,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        'line':'#F5F5F5',
         "primary-500": "#877EFF",
         "secondary-500": "#FFB620",
         blue: "#0095F6",
@@ -210,6 +211,9 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      flexGrow:{
+        3:'3'
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
