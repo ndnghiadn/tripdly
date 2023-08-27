@@ -29,13 +29,9 @@ export async function POST(
     const server = await db.server.update({
       where: {
         id: serverId,
-        members: {
-          some: {
-            profileId: profile.id,
-            role: {
-              in: [MemberRole.ADMIN, MemberRole.MODERATOR]
-            }
-          }
+        profileId: profile.id,
+        role: {
+          in: [MemberRole.ADMIN, MemberRole.MODERATOR]
         }
       },
       data: {

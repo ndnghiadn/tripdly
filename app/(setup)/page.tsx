@@ -9,12 +9,8 @@ const SetupPage = async () => {
 
   const server = await db.server.findFirst({
     where: {
-      members: {
-        some: {
-          profileId: profile.id
-        }
-      }
-    }
+      profileId: profile.id,
+    },
   });
 
   if (server) {
@@ -22,6 +18,6 @@ const SetupPage = async () => {
   }
 
   return <InitialModal />;
-}
- 
+};
+
 export default SetupPage;

@@ -19,34 +19,17 @@ const ServerIdPage = async ({
     return redirectToSignIn();
   }
 
-  const server = await db.server.findUnique({
+  const channel = await db.channel.findFirst({
     where: {
-      id: params.serverId,
-      members: {
-        some: {
-          profileId: profile.id,
-        }
-      }
-    },
-    include: {
-      channels: {
-        where: {
-          name: "general"
-        },
-        orderBy: {
-          createdAt: "asc"
-        }
-      }
+      serverId: params.serverId
     }
-  })
+  });
 
-  const initialChannel = server?.channels[0];
-
-  if (initialChannel?.name !== "general") {
+  if (channel?.name !== "general") {
     return null;
   }
 
-  return redirect(`/servers/${params.serverId}/channels/${initialChannel?.id}`)
+  return redirect(`/servers/${params.serverId}/channels/${channel?.id}`)
 }
  
 export default ServerIdPage;
