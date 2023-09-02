@@ -33,11 +33,11 @@ export default async function handler(
     const server = await db.server.findFirst({
       where: {
         id: serverId as string,
-        members: {
-          some: {
-            profileId: profile.id,
-          }
-        }
+        // members: {
+        //   some: {
+        //     profileId: profile.id,
+        //   }
+        // }
       },
       include: {
         members: true,
@@ -98,17 +98,17 @@ export default async function handler(
           id: messageId as string,
         },
         data: {
-          fileUrl: null,
+          fileUrl: '',
           content: "This message has been deleted.",
           deleted: true,
         },
-        include: {
-          member: {
-            include: {
-              profile: true,
-            }
-          }
-        }
+        // include: {
+        //   member: {
+        //     include: {
+        //       profile: true,
+        //     }
+        //   }
+        // }
       })
     }
 
