@@ -30,9 +30,9 @@ export async function POST(
       where: {
         id: serverId,
         profileId: profile.id,
-        role: {
-          in: [MemberRole.ADMIN, MemberRole.MODERATOR]
-        }
+        // role: {
+        //   in: [MemberRole.ADMIN, MemberRole.MODERATOR]
+        // }
       },
       data: {
         channels: {
