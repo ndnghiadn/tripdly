@@ -30,9 +30,9 @@ export async function DELETE(
       where: {
         id: serverId,
         profileId: profile.id,
-        role: {
-          in: [MemberRole.ADMIN, MemberRole.MODERATOR],
-        },
+        // role: {
+        //   in: [MemberRole.ADMIN, MemberRole.MODERATOR],
+        // },
       },
       data: {
         channels: {
@@ -84,9 +84,9 @@ export async function PATCH(
       where: {
         id: serverId,
         profileId: profile.id,
-        role: {
-          in: [MemberRole.ADMIN, MemberRole.MODERATOR],
-        },
+        // role: {
+        //   in: [MemberRole.ADMIN, MemberRole.MODERATOR],
+        // },
       },
       data: {
         channels: {
