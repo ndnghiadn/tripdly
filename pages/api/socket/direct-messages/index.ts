@@ -73,7 +73,7 @@ export default async function handler(
     const message = await db.directMessage.create({
       data: {
         content,
-        fileUrl,
+        fileUrl: fileUrl || "",
         conversationId: conversationId as string,
         memberId: member.id,
       },

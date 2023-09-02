@@ -36,11 +36,11 @@ export default async function handler(
     const server = await db.server.findFirst({
       where: {
         id: serverId as string,
-        members: {
-          some: {
-            profileId: profile.id
-          }
-        }
+        // members: {
+        //   some: {
+        //     profileId: profile.id
+        //   }
+        // }
       },
       include: {
         members: true,
@@ -71,7 +71,7 @@ export default async function handler(
     const message = await db.message.create({
       data: {
         content,
-        fileUrl,
+        fileUrl: fileUrl || '',
         channelId: channelId as string,
         memberId: member.id,
       },
